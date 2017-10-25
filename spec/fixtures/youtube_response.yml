@@ -1,0 +1,143 @@
+---
+res: !ruby/object:HTTP::Response
+  version: '1.1'
+  uri: !ruby/object:HTTP::URI
+    uri: !ruby/object:Addressable::URI
+      validation_deferred: false
+      scheme: https
+      host: www.googleapis.com
+      path: "/youtube/v3/search"
+      query: part=id&&type=videoq=tomato&key=AIzaSyCzNklZQKM46KEB89Hi5a502S2l_AvNqQY
+      authority: www.googleapis.com
+      uri_string: https://www.googleapis.com/youtube/v3/search?part=id&&type=videoq=tomato&key=AIzaSyCzNklZQKM46KEB89Hi5a502S2l_AvNqQY
+      password: 
+      user: 
+      port: 
+  status: !ruby/marshalable:HTTP::Response::Status
+    :__v2__:
+    - :@code
+    ? - 200
+    : 200
+  headers: !ruby/object:HTTP::Headers
+    pile:
+    - - Expires
+      - Wed, 25 Oct 2017 13:17:46 GMT
+    - - Date
+      - Wed, 25 Oct 2017 13:17:46 GMT
+    - - Cache-Control
+      - private, max-age=120, must-revalidate, no-transform
+    - - Etag
+      - '"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/1FrBD3_QS8MQSiB1rn6Xw_rh74M"'
+    - - Vary
+      - Origin
+    - - Vary
+      - X-Origin
+    - - Content-Type
+      - application/json; charset=UTF-8
+    - - X-Content-Type-Options
+      - nosniff
+    - - X-Frame-Options
+      - SAMEORIGIN
+    - - X-Xss-Protection
+      - 1; mode=block
+    - - Content-Length
+      - '1206'
+    - - Server
+      - GSE
+    - - Alt-Svc
+      - quic=":443"; ma=2592000; v="39,38,37,35"
+    - - Connection
+      - close
+  proxy_headers: !ruby/object:HTTP::Headers
+    pile: []
+  content_type: !ruby/struct:HTTP::ContentType
+    mime_type: application/json
+    charset: UTF-8
+  body: !ruby/object:HTTP::Response::Body
+    stream: &1 !ruby/object:HTTP::Connection
+      persistent: false
+      keep_alive_timeout: 5.0
+      pending_request: false
+      pending_response: false
+      failed_proxy_connect: false
+      parser: !ruby/object:HTTP::Response::Parser
+        parser: !ruby/object:HTTP::Parser {}
+        finished: false
+        headers: 
+        chunk: 
+      socket: !ruby/object:HTTP::Timeout::Null
+        options: {}
+        socket: !ruby/object:OpenSSL::SSL::SSLSocket
+          context: !ruby/object:OpenSSL::SSL::SSLContext
+            verify_mode: 1
+            verify_hostname: true
+            cert_store: !ruby/object:OpenSSL::X509::Store
+              verify_callback: 
+              error: 
+              error_string: 
+              chain: 
+              time: 
+          io: !ruby/object:TCPSocket {}
+          eof: false
+          rbuffer: ''
+          sync: true
+          hostname: www.googleapis.com
+          sync_close: true
+          wbuffer: ''
+      keep_alive: false
+    connection: *1
+    streaming: false
+    contents: |
+      {
+       "kind": "youtube#searchListResponse",
+       "etag": "\"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/1FrBD3_QS8MQSiB1rn6Xw_rh74M\"",
+       "nextPageToken": "CAUQAA",
+       "regionCode": "TW",
+       "pageInfo": {
+        "totalResults": 1000000,
+        "resultsPerPage": 5
+       },
+       "items": [
+        {
+         "kind": "youtube#searchResult",
+         "etag": "\"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/xf_gzBoWgQqJ1GhFCFwSlp8LH-k\"",
+         "id": {
+          "kind": "youtube#video",
+          "videoId": "iKzRIweSBLA"
+         }
+        },
+        {
+         "kind": "youtube#searchResult",
+         "etag": "\"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/cN1aKDjHm9dAyFfaLLlv-lEACHE\"",
+         "id": {
+          "kind": "youtube#video",
+          "videoId": "nfs8NYg7yQM"
+         }
+        },
+        {
+         "kind": "youtube#searchResult",
+         "etag": "\"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/kxrcLj1VSd8pw3tOE7KlsdXN83o\"",
+         "id": {
+          "kind": "youtube#video",
+          "videoId": "tt2k8PGm-TI"
+         }
+        },
+        {
+         "kind": "youtube#searchResult",
+         "etag": "\"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/BDEfjpY3JDutURWxdJdJ8calYuA\"",
+         "id": {
+          "kind": "youtube#video",
+          "videoId": "nSDgHBxUbVQ"
+         }
+        },
+        {
+         "kind": "youtube#searchResult",
+         "etag": "\"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/1rGCrVRgHZx4xAYikU12DLdD8eQ\"",
+         "id": {
+          "kind": "youtube#video",
+          "videoId": "8TpcBDJZsJA"
+         }
+        }
+       ]
+      }
+    encoding: !ruby/encoding UTF-8
