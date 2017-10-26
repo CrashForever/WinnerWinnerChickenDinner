@@ -39,19 +39,8 @@ module VideosPraise
 
     def get_video(query_name)
       #要對query_name做空白=%20的處理
-<<<<<<< HEAD
-      query_name = query_name.gsub!(' ', '%20')
-
-      youtube_request_rul = YoutubeAPI.get_search_path(query_name.to_s)
-      VCR.configure do |config|
-        config.cassette_library_dir = '../spec/fixtures/cassettes/'
-        config.hook_into :webmock
-        config.filter_sensitive_data('<YOUTUBE_API_KEY>') { @API_KEY }
-        config.filter_sensitive_data('<YOUTUBE_API_KEY_ESC>') { CGI.escape(@API_KEY) }
-      end
-      VCR.insert_cassette 'youtube_API', record: :new_episodes
-=======
->>>>>>> tests_vcr
+      query_name_esc = CGI.escape(query_name)
+      youtube_request_rul = YoutubeAPI.get_search_path(query_name_esc.to_s)
       raw_youtube_Api_response = (call_youtube_api_url(youtube_request_rul))
       results = YoutubeAPI.process_response(raw_youtube_Api_response)
 
@@ -70,6 +59,7 @@ module VideosPraise
       ).get(url + "&key=#{@API_KEY}")
     end
 
+    def self.process_response(response)
       youtube_response = {}
       youtube_results = {}
 
