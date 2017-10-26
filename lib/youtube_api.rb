@@ -42,7 +42,13 @@ module VideosPraise
       query_name = query_name.gsub!(' ', '%20')
 
       youtube_request_rul = YoutubeAPI.get_search_path(query_name.to_s)
-      puts youtube_request_rul
+      VCR.configure do |config|
+        config.cassette_library_dir = '../spec/fixtures/cassettes/'
+        config.hook_into :webmock
+        config.filter_sensitive_data('<YOUTUBE_API_KEY>') { @API_KEY }
+        config.filter_sensitive_data('<YOUTUBE_API_KEY_ESC>') { CGI.escape(@API_KEY) }
+      end
+      VCR.insert_cassette 'youtube_API', record: :new_episodes
       raw_youtube_Api_response = (call_youtube_api_url(youtube_request_rul))
       results = YoutubeAPI.process_response(raw_youtube_Api_response)
 
