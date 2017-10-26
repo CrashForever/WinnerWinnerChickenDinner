@@ -21,13 +21,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Thu, 26 Oct 2017 07:03:06 GMT
+      - Thu, 26 Oct 2017 14:39:23 GMT
       Date:
-      - Thu, 26 Oct 2017 07:03:06 GMT
+      - Thu, 26 Oct 2017 14:39:23 GMT
       Cache-Control:
       - private, max-age=120, must-revalidate, no-transform
       Etag:
-      - '"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/tvWbgBUStD6elJP87vf5gN8KEaA"'
+      - '"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/DFtPxK7nRuW4TMuvZ98aCN5XqjM"'
       Vary:
       - Origin
       - X-Origin
@@ -44,7 +44,7 @@ http_interactions:
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="41,39,38,37,35"
+      - quic=":443"; ma=2592000; v="39,38,37,35"
       Connection:
       - close
     body:
@@ -52,7 +52,7 @@ http_interactions:
       string: |
         {
          "kind": "youtube#searchListResponse",
-         "etag": "\"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/tvWbgBUStD6elJP87vf5gN8KEaA\"",
+         "etag": "\"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/DFtPxK7nRuW4TMuvZ98aCN5XqjM\"",
          "nextPageToken": "CAUQAA",
          "regionCode": "TW",
          "pageInfo": {
@@ -103,111 +103,7 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Thu, 26 Oct 2017 07:03:08 GMT
-- request:
-    method: get
-    uri: https://www.googleapis.com/youtube/v3/search?key=<API_KEY>&part=id&q=tomatorecipe&type=video
-    body:
-      encoding: UTF-8
-      string: ''
-    headers:
-      Accept:
-      - application/json
-      Connection:
-      - close
-      Host:
-      - www.googleapis.com
-      User-Agent:
-      - http.rb/3.0.0
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Expires:
-      - Thu, 26 Oct 2017 07:06:06 GMT
-      Date:
-      - Thu, 26 Oct 2017 07:06:06 GMT
-      Cache-Control:
-      - private, max-age=120, must-revalidate, no-transform
-      Etag:
-      - '"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/xliA5cclaQBR_WKdviK_qTlyzpg"'
-      Vary:
-      - Origin
-      - X-Origin
-      Content-Type:
-      - application/json; charset=UTF-8
-      X-Content-Type-Options:
-      - nosniff
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Xss-Protection:
-      - 1; mode=block
-      Content-Length:
-      - '1204'
-      Server:
-      - GSE
-      Alt-Svc:
-      - quic=":443"; ma=2592000; v="41,39,38,37,35"
-      Connection:
-      - close
-    body:
-      encoding: UTF-8
-      string: |
-        {
-         "kind": "youtube#searchListResponse",
-         "etag": "\"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/xliA5cclaQBR_WKdviK_qTlyzpg\"",
-         "nextPageToken": "CAUQAA",
-         "regionCode": "TW",
-         "pageInfo": {
-          "totalResults": 32563,
-          "resultsPerPage": 5
-         },
-         "items": [
-          {
-           "kind": "youtube#searchResult",
-           "etag": "\"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/2FBM_BsCt0v5C4SXRhxGV_fN8uc\"",
-           "id": {
-            "kind": "youtube#video",
-            "videoId": "DyufiUiWk9E"
-           }
-          },
-          {
-           "kind": "youtube#searchResult",
-           "etag": "\"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/XBW3GpJE2nbGigy4dJVHIejs4zk\"",
-           "id": {
-            "kind": "youtube#video",
-            "videoId": "RmY-nlLwEws"
-           }
-          },
-          {
-           "kind": "youtube#searchResult",
-           "etag": "\"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/TVyIPQbbDYcuH3MVNgwryoi9pGs\"",
-           "id": {
-            "kind": "youtube#video",
-            "videoId": "FVfEm34RRMo"
-           }
-          },
-          {
-           "kind": "youtube#searchResult",
-           "etag": "\"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/Pwy8Ppe6anTexgCcKEqE2aqU5JM\"",
-           "id": {
-            "kind": "youtube#video",
-            "videoId": "S_HOg89Unno"
-           }
-          },
-          {
-           "kind": "youtube#searchResult",
-           "etag": "\"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/xMNZColCnGz3zKWfvRP0Kd96u-A\"",
-           "id": {
-            "kind": "youtube#video",
-            "videoId": "kMaaMCuGZuo"
-           }
-          }
-         ]
-        }
-    http_version: 
-  recorded_at: Thu, 26 Oct 2017 07:06:08 GMT
+  recorded_at: Thu, 26 Oct 2017 14:39:23 GMT
 - request:
     method: get
     uri: https://www.googleapis.com/youtube/v3/search?key=<API_KEY>&part=id&q=&type=video
@@ -229,117 +125,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Thu, 26 Oct 2017 07:27:02 GMT
+      - Thu, 26 Oct 2017 14:39:24 GMT
       Date:
-      - Thu, 26 Oct 2017 07:27:02 GMT
+      - Thu, 26 Oct 2017 14:39:24 GMT
       Cache-Control:
       - private, max-age=120, must-revalidate, no-transform
       Etag:
-      - '"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/eaVF3phFqPEpR27W6asR1ib2v6Y"'
-      Vary:
-      - Origin
-      - X-Origin
-      Content-Type:
-      - application/json; charset=UTF-8
-      X-Content-Type-Options:
-      - nosniff
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Xss-Protection:
-      - 1; mode=block
-      Content-Length:
-      - '1206'
-      Server:
-      - GSE
-      Alt-Svc:
-      - quic=":443"; ma=2592000; v="41,39,38,37,35"
-      Connection:
-      - close
-    body:
-      encoding: UTF-8
-      string: |
-        {
-         "kind": "youtube#searchListResponse",
-         "etag": "\"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/eaVF3phFqPEpR27W6asR1ib2v6Y\"",
-         "nextPageToken": "CAUQAA",
-         "regionCode": "TW",
-         "pageInfo": {
-          "totalResults": 1000000,
-          "resultsPerPage": 5
-         },
-         "items": [
-          {
-           "kind": "youtube#searchResult",
-           "etag": "\"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/asaMtfLQAeE0qkXDubzpXDL20fQ\"",
-           "id": {
-            "kind": "youtube#video",
-            "videoId": "-HjpL-Ns6_A"
-           }
-          },
-          {
-           "kind": "youtube#searchResult",
-           "etag": "\"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/xf_gzBoWgQqJ1GhFCFwSlp8LH-k\"",
-           "id": {
-            "kind": "youtube#video",
-            "videoId": "iKzRIweSBLA"
-           }
-          },
-          {
-           "kind": "youtube#searchResult",
-           "etag": "\"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/cN1aKDjHm9dAyFfaLLlv-lEACHE\"",
-           "id": {
-            "kind": "youtube#video",
-            "videoId": "nfs8NYg7yQM"
-           }
-          },
-          {
-           "kind": "youtube#searchResult",
-           "etag": "\"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/kxrcLj1VSd8pw3tOE7KlsdXN83o\"",
-           "id": {
-            "kind": "youtube#video",
-            "videoId": "tt2k8PGm-TI"
-           }
-          },
-          {
-           "kind": "youtube#searchResult",
-           "etag": "\"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/BDEfjpY3JDutURWxdJdJ8calYuA\"",
-           "id": {
-            "kind": "youtube#video",
-            "videoId": "nSDgHBxUbVQ"
-           }
-          }
-         ]
-        }
-    http_version: 
-  recorded_at: Thu, 26 Oct 2017 07:27:04 GMT
-- request:
-    method: get
-    uri: https://www.googleapis.com/youtube/v3/search?key=<API_KEY>&part=id&q=&type=video
-    body:
-      encoding: UTF-8
-      string: ''
-    headers:
-      Accept:
-      - application/json
-      Connection:
-      - close
-      Host:
-      - www.googleapis.com
-      User-Agent:
-      - http.rb/3.0.0
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Expires:
-      - Thu, 26 Oct 2017 07:43:16 GMT
-      Date:
-      - Thu, 26 Oct 2017 07:43:16 GMT
-      Cache-Control:
-      - private, max-age=120, must-revalidate, no-transform
-      Etag:
-      - '"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/G0RJ57jSQC1HIsmswFca6O_E_4k"'
+      - '"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/S3GVHx2yYqQklMO0bYMhHFNk6OM"'
       Vary:
       - Origin
       - X-Origin
@@ -364,7 +156,7 @@ http_interactions:
       string: |
         {
          "kind": "youtube#searchListResponse",
-         "etag": "\"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/G0RJ57jSQC1HIsmswFca6O_E_4k\"",
+         "etag": "\"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/S3GVHx2yYqQklMO0bYMhHFNk6OM\"",
          "nextPageToken": "CAUQAA",
          "regionCode": "TW",
          "pageInfo": {
@@ -415,5 +207,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Thu, 26 Oct 2017 07:43:18 GMT
+  recorded_at: Thu, 26 Oct 2017 14:39:24 GMT
 recorded_with: VCR 3.0.3
