@@ -3,8 +3,24 @@ GEM
   specs:
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
+    ast (2.3.0)
+    axiom-types (0.1.1)
+      descendants_tracker (~> 0.0.4)
+      ice_nine (~> 0.11.0)
+      thread_safe (~> 0.3, >= 0.3.1)
+    codeclimate-engine-rb (0.4.0)
+      virtus (~> 1.0)
+    coercible (1.0.0)
+      descendants_tracker (~> 0.0.1)
+    crack (0.4.3)
+      safe_yaml (~> 1.0.0)
+    descendants_tracker (0.0.4)
+      thread_safe (~> 0.3, >= 0.3.1)
+    docile (1.1.5)
     domain_name (0.5.20170404)
       unf (>= 0.0.5, < 1.0.0)
+    equalizer (0.0.11)
+    hashdiff (0.3.7)
     http (3.0.0)
       addressable (~> 2.3)
       http-cookie (~> 1.0)
@@ -14,16 +30,54 @@ GEM
       domain_name (~> 0.5)
     http-form_data (2.0.0)
     http_parser.rb (0.6.0)
-    public_suffix (3.0.0)
+    ice_nine (0.11.2)
+    json (2.1.0)
+    minitest (5.10.3)
+    minitest-rg (5.2.0)
+      minitest (~> 5.0)
+    parser (2.4.0.0)
+      ast (~> 2.2)
+    public_suffix (2.0.5)
+    rainbow (2.2.2)
+      rake
+    rake (12.1.0)
+    reek (4.7.2)
+      codeclimate-engine-rb (~> 0.4.0)
+      parser (>= 2.4.0.0, < 2.5)
+      rainbow (~> 2.0)
+    safe_yaml (1.0.4)
+    simplecov (0.15.1)
+      docile (~> 1.1.0)
+      json (>= 1.8, < 3)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.2)
+    thread_safe (0.3.6)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.4)
+    vcr (3.0.3)
+    virtus (1.0.5)
+      axiom-types (~> 0.1)
+      coercible (~> 1.0)
+      descendants_tracker (~> 0.0, >= 0.0.3)
+      equalizer (~> 0.0, >= 0.0.9)
+    webmock (3.1.0)
+      addressable (>= 2.3.6)
+      crack (>= 0.3.2)
+      hashdiff
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   http
+  json
+  minitest
+  minitest-rg
+  reek
+  simplecov
+  vcr
+  webmock
 
 BUNDLED WITH
    1.15.4

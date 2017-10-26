@@ -1,0 +1,36 @@
+---
+- !ruby/object:VideosPraise::VideoData
+  data:
+    kind: youtube#searchResult
+    etag: '"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/MkH6luhx1EGswfmyQq1a855Zz4w"'
+    id:
+      kind: youtube#video
+      videoId: EFv69aT5bZI
+- !ruby/object:VideosPraise::VideoData
+  data:
+    kind: youtube#searchResult
+    etag: '"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/vwH6VVhhw3FcCbDg4ZLnuie1mPQ"'
+    id:
+      kind: youtube#video
+      videoId: 6d064RiWVJM
+- !ruby/object:VideosPraise::VideoData
+  data:
+    kind: youtube#searchResult
+    etag: '"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/lyPlVUrLr5TDyD7eXvGDJcj6qlQ"'
+    id:
+      kind: youtube#video
+      videoId: 2qV40NfC8Bs
+- !ruby/object:VideosPraise::VideoData
+  data:
+    kind: youtube#searchResult
+    etag: '"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/xMNZColCnGz3zKWfvRP0Kd96u-A"'
+    id:
+      kind: youtube#video
+      videoId: kMaaMCuGZuo
+- !ruby/object:VideosPraise::VideoData
+  data:
+    kind: youtube#searchResult
+    etag: '"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/_6DmzCSIiYQgnPo2ZzVwOhiLYaY"'
+    id:
+      kind: youtube#video
+      videoId: Oj9_luDe7EE
