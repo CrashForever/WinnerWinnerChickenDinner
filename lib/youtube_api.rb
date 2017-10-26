@@ -39,6 +39,7 @@ module VideosPraise
 
     def get_video(query_name)
       #要對query_name做空白=%20的處理
+<<<<<<< HEAD
       query_name = query_name.gsub!(' ', '%20')
 
       youtube_request_rul = YoutubeAPI.get_search_path(query_name.to_s)
@@ -49,6 +50,8 @@ module VideosPraise
         config.filter_sensitive_data('<YOUTUBE_API_KEY_ESC>') { CGI.escape(@API_KEY) }
       end
       VCR.insert_cassette 'youtube_API', record: :new_episodes
+=======
+>>>>>>> tests_vcr
       raw_youtube_Api_response = (call_youtube_api_url(youtube_request_rul))
       results = YoutubeAPI.process_response(raw_youtube_Api_response)
 
@@ -66,9 +69,7 @@ module VideosPraise
         'Accept' => "application/json"
       ).get(url + "&key=#{@API_KEY}")
     end
-    def self.process_response(response)
 
-      parsed_response = JSON.parse(response)
       youtube_response = {}
       youtube_results = {}
 
@@ -83,6 +84,7 @@ module VideosPraise
       youtube_results['items'] = res['items']
       youtube_results
     end
+
     def self.get_search_path(query_name)
       'https://www.googleapis.com/youtube/v3/search?part=id&type=video&q=' + query_name
     end
