@@ -1,6 +1,13 @@
+require 'rake/testtask'
+
 desc 'run tests'
-task :spec do
-  sh 'ruby spec/video_spec.rb'
+Rake::TestTask.new(:spec) do |t|
+    t.pattern = 'spec/*_spec.rb'
+    t.warning = false
+end
+
+task :console do
+  sh 'pry -r ./spec/test_load_all'
 end
 
 namespace :quality do

@@ -1,5 +1,4 @@
 # video_mapper.rb
-require_relative './entities/init.rb'
 module VideosPraise
   # Library for FacebookAPI
   module Youtube
@@ -24,14 +23,10 @@ module VideosPraise
         end
 
         def build_entity
-          response_entity = []
-          #@video_data['items'].each do |item|
-            response_entity << VideosPraise::Entity::VideoContent.new(
+            VideosPraise::Entity::VideoContent.new(
                 kind: kind,
                 videoId: videoId
             )
-          #end
-
         end
 
         def kind

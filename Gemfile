@@ -6,9 +6,17 @@ gem 'http'
 gem 'json'
 gem 'reek'
 
+# Web app related
+gem 'econfig'
+gem 'roda'
+gem 'puma'
+
 # Testing gems
 gem 'minitest'
 gem 'minitest-rg'
+gem 'pry'
+gem 'rack-test'
+gem 'rake'
 gem 'vcr'
 gem 'pry'
 gem 'rack-test'

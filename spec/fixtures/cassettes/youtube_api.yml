@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://www.googleapis.com/youtube/v3/search?key=<API_KEY>&part=id&q=tomato%20recipe&type=video
+    uri: https://www.googleapis.com/youtube/v3/search?key=<API_KEY>&part=id&q=tomato%2Brecipe&type=video
     body:
       encoding: UTF-8
       string: ''
@@ -21,13 +21,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Thu, 26 Oct 2017 14:39:23 GMT
+      - Fri, 27 Oct 2017 13:10:36 GMT
       Date:
-      - Thu, 26 Oct 2017 14:39:23 GMT
+      - Fri, 27 Oct 2017 13:10:36 GMT
       Cache-Control:
       - private, max-age=120, must-revalidate, no-transform
       Etag:
-      - '"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/DFtPxK7nRuW4TMuvZ98aCN5XqjM"'
+      - '"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/x7BfkwnzGnPxIJDw8LHmUb_uyb8"'
       Vary:
       - Origin
       - X-Origin
@@ -44,7 +44,7 @@ http_interactions:
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="39,38,37,35"
+      - quic=":443"; ma=2592000; v="41,39,38,37,35"
       Connection:
       - close
     body:
@@ -52,7 +52,7 @@ http_interactions:
       string: |
         {
          "kind": "youtube#searchListResponse",
-         "etag": "\"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/DFtPxK7nRuW4TMuvZ98aCN5XqjM\"",
+         "etag": "\"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/x7BfkwnzGnPxIJDw8LHmUb_uyb8\"",
          "nextPageToken": "CAUQAA",
          "regionCode": "TW",
          "pageInfo": {
@@ -103,10 +103,10 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Thu, 26 Oct 2017 14:39:23 GMT
+  recorded_at: Fri, 27 Oct 2017 13:10:36 GMT
 - request:
     method: get
-    uri: https://www.googleapis.com/youtube/v3/search?key=<API_KEY>&part=id&q=&type=video
+    uri: https://www.googleapis.com/youtube/v3/search?key=<API_KEY>&part=id&q=88&type=video
     body:
       encoding: UTF-8
       string: ''
@@ -125,13 +125,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Thu, 26 Oct 2017 14:39:24 GMT
+      - Fri, 27 Oct 2017 13:16:46 GMT
       Date:
-      - Thu, 26 Oct 2017 14:39:24 GMT
+      - Fri, 27 Oct 2017 13:16:46 GMT
       Cache-Control:
       - private, max-age=120, must-revalidate, no-transform
       Etag:
-      - '"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/S3GVHx2yYqQklMO0bYMhHFNk6OM"'
+      - '"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/9myp7_bP6filzPtC_ryEF95ABhc"'
       Vary:
       - Origin
       - X-Origin
@@ -148,7 +148,7 @@ http_interactions:
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="39,38,37,35"
+      - quic=":443"; ma=2592000; v="41,39,38,37,35"
       Connection:
       - close
     body:
@@ -156,7 +156,7 @@ http_interactions:
       string: |
         {
          "kind": "youtube#searchListResponse",
-         "etag": "\"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/S3GVHx2yYqQklMO0bYMhHFNk6OM\"",
+         "etag": "\"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/9myp7_bP6filzPtC_ryEF95ABhc\"",
          "nextPageToken": "CAUQAA",
          "regionCode": "TW",
          "pageInfo": {
@@ -166,46 +166,150 @@ http_interactions:
          "items": [
           {
            "kind": "youtube#searchResult",
-           "etag": "\"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/asaMtfLQAeE0qkXDubzpXDL20fQ\"",
+           "etag": "\"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/T8wInTr0KsfriDCXfXh8AzbHt7A\"",
            "id": {
             "kind": "youtube#video",
-            "videoId": "-HjpL-Ns6_A"
+            "videoId": "Xx9DluMpEbg"
            }
           },
           {
            "kind": "youtube#searchResult",
-           "etag": "\"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/xf_gzBoWgQqJ1GhFCFwSlp8LH-k\"",
+           "etag": "\"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/VXsOodNSulwmYoLcIigQtT49j8U\"",
            "id": {
             "kind": "youtube#video",
-            "videoId": "iKzRIweSBLA"
+            "videoId": "jis5z99Z3OE"
            }
           },
           {
            "kind": "youtube#searchResult",
-           "etag": "\"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/cN1aKDjHm9dAyFfaLLlv-lEACHE\"",
+           "etag": "\"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/NQZXmUE8z77tA0wtCtFLRNkCMXE\"",
            "id": {
             "kind": "youtube#video",
-            "videoId": "nfs8NYg7yQM"
+            "videoId": "93hd5MTFuew"
            }
           },
           {
            "kind": "youtube#searchResult",
-           "etag": "\"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/kxrcLj1VSd8pw3tOE7KlsdXN83o\"",
+           "etag": "\"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/tAApN3PtUCNmhw2iWH9KoreS51c\"",
            "id": {
             "kind": "youtube#video",
-            "videoId": "tt2k8PGm-TI"
+            "videoId": "gukr7i517aQ"
            }
           },
           {
            "kind": "youtube#searchResult",
-           "etag": "\"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/BDEfjpY3JDutURWxdJdJ8calYuA\"",
+           "etag": "\"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/Y45665KR__OvjuyMCDxHxjqRF08\"",
            "id": {
             "kind": "youtube#video",
-            "videoId": "nSDgHBxUbVQ"
+            "videoId": "ylJJJbDAm-k"
            }
           }
          ]
         }
     http_version: 
-  recorded_at: Thu, 26 Oct 2017 14:39:24 GMT
+  recorded_at: Fri, 27 Oct 2017 13:16:46 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/youtube/v3/search?key=<API_KEY>&part=id&q=wrong&type=video
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Connection:
+      - close
+      Host:
+      - www.googleapis.com
+      User-Agent:
+      - http.rb/3.0.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - Fri, 27 Oct 2017 13:18:11 GMT
+      Date:
+      - Fri, 27 Oct 2017 13:18:11 GMT
+      Cache-Control:
+      - private, max-age=120, must-revalidate, no-transform
+      Etag:
+      - '"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/vDhFt3biGfviHsIkXwdOuBTXonw"'
+      Vary:
+      - Origin
+      - X-Origin
+      Content-Type:
+      - application/json; charset=UTF-8
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '1206'
+      Server:
+      - GSE
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="41,39,38,37,35"
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: |
+        {
+         "kind": "youtube#searchListResponse",
+         "etag": "\"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/vDhFt3biGfviHsIkXwdOuBTXonw\"",
+         "nextPageToken": "CAUQAA",
+         "regionCode": "TW",
+         "pageInfo": {
+          "totalResults": 1000000,
+          "resultsPerPage": 5
+         },
+         "items": [
+          {
+           "kind": "youtube#searchResult",
+           "etag": "\"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/KOEJPfXzz4T74JhJM8gel-wFzYM\"",
+           "id": {
+            "kind": "youtube#video",
+            "videoId": "KMskscn8R-Y"
+           }
+          },
+          {
+           "kind": "youtube#searchResult",
+           "etag": "\"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/oAMoSLRWP1ZPviuBv_b0zXuFyGU\"",
+           "id": {
+            "kind": "youtube#video",
+            "videoId": "qGvAfJJEVgM"
+           }
+          },
+          {
+           "kind": "youtube#searchResult",
+           "etag": "\"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/TgNCHmPlizTqKuSrHn3FX2OA6Mw\"",
+           "id": {
+            "kind": "youtube#video",
+            "videoId": "NcH4ks8GMCA"
+           }
+          },
+          {
+           "kind": "youtube#searchResult",
+           "etag": "\"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/uq7eTCkGSzkwvXX6FC2ZoO_wU4A\"",
+           "id": {
+            "kind": "youtube#video",
+            "videoId": "VoQS84WhRdc"
+           }
+          },
+          {
+           "kind": "youtube#searchResult",
+           "etag": "\"cbz3lIQ2N25AfwNr-BdxUVxJ_QY/vhTY-6AdmbfcK4a8J6jN0twwcfI\"",
+           "id": {
+            "kind": "youtube#video",
+            "videoId": "LH2UB2uD-tA"
+           }
+          }
+         ]
+        }
+    http_version: 
+  recorded_at: Fri, 27 Oct 2017 13:18:11 GMT
 recorded_with: VCR 3.0.3
