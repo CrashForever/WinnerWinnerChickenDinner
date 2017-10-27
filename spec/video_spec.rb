@@ -1,6 +1,9 @@
 require_relative 'spec_helper.rb'
 
 describe 'Tests Praise library' do
+
+  CASSTTE_FILE = 'youtube_api'.freeze
+    
   before do
     VCR.insert_cassette CASSTTE_FILE,
                         record: :new_episodes,
