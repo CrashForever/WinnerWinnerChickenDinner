@@ -1,12 +1,9 @@
 require 'http'
-require 'vcr'
-require 'webmock'
-require_relative 'video_data.rb'
 
 module VideosPraise
   # Library for FacebookAPI
   module Youtube
-    class API
+    class Api
       module Errors
         # Not allowed to access resource
         Unauthorized = Class.new(StandardError)
@@ -43,7 +40,7 @@ module VideosPraise
         #要對query_name做空白=%20的處理
         query_name_esc = CGI.escape(query_name)
 
-        youtube_request_rul = API.get_search_path(query_name_esc.to_s)
+        youtube_request_rul = Api.get_search_path(query_name_esc.to_s)
         # raw_youtube_Api_response = (call_youtube_api_url(youtube_request_rul))
         # results = API.process_response(raw_youtube_Api_response)
         #

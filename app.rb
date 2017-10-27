@@ -1,7 +1,8 @@
 require 'roda'
 require 'econfig'
-# require_relative 'lib/init.rb'
-
+#require_relative 'lib/init.rb'
+require_relative './lib/youtube_api.rb'
+require_relative './lib/video_mapper.rb'
 module VideosPraise
   # Web API
   class Api < Roda
@@ -16,9 +17,6 @@ module VideosPraise
     route do |routing|
       app = Api
       config = Api.config
-      # puts '---------'
-      # puts config
-      # puts '---------'
 
       # GET / request
       routing.root do
@@ -30,23 +28,33 @@ module VideosPraise
         routing.on 'v0.1' do
           # /api/v0.1/:ownername/:repo_name branch
           routing.on 'videosearch', String do |query_name|
-            YouTubeAPI = Youtube::API.new(config.GOOGLE_API_KEY)
-            Video_mapper = Youtube::VideoMapper.new(YouTubeAPI)
+            key = config.GOOGLE_API_KEY
+            youtubeGateway = Youtube::Api.new(key)
+            res = Youtube::VideoMapper.new(youtubeGateway)
+            puts res.load(query_name)
             begin
-              video = Video_mapper.load(query_name)
+              video = res.load(query_name)
+              video_results = []
+
+              video.each do |x|
+                puts x.videoId
+                puts '======='
+                puts x.kind
+                video_results << {
+                  videoId: x.videoId,
+                  kind: x.kind
+                }
+                video_results
+              end
             rescue StandardError
               routing.halt(404, error: 'Video not found')
             end
-
-            # GET /api/v0.1/:ownername/:repo_name request
-            routing.is do
-              { repo: { owner: repo.owner.to_h, size: repo.size } }
-            end
-
-            # GET /api/v0.1/:ownername/:repo_name/contributors request
-            routing.get 'contributors' do
-              { contributors: repo.contributors.map(&:to_h) }
-            end
+            # puts config.GOOGLE_API_KEY
+            # puts query_name
+            # {
+            #   key: key,
+            #   name: query_name
+            # }
           end
         end
       end
