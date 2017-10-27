@@ -31,30 +31,15 @@ module VideosPraise
             key = config.GOOGLE_API_KEY
             youtubeGateway = Youtube::Api.new(key)
             res = Youtube::VideoMapper.new(youtubeGateway)
-            puts res.load(query_name)
             begin
               video = res.load(query_name)
-              video_results = []
-
-              video.each do |x|
-                puts x.videoId
-                puts '======='
-                puts x.kind
-                video_results << {
-                  videoId: x.videoId,
-                  kind: x.kind
-                }
-                video_results
-              end
             rescue StandardError
               routing.halt(404, error: 'Video not found')
             end
-            # puts config.GOOGLE_API_KEY
-            # puts query_name
-            # {
-            #   key: key,
-            #   name: query_name
-            # }
+
+            routing.is do
+                {query:query_name, totalResults: video.videoId.size, videos: video.videoId}
+            end
           end
         end
       end
