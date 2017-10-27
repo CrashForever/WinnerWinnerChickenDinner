@@ -1,5 +1,4 @@
 # video_mapper.rb
-require_relative './entities/init.rb'
 module VideosPraise
   # Library for FacebookAPI
   module Youtube

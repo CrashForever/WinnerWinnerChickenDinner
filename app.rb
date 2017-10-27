@@ -1,8 +1,8 @@
 require 'roda'
 require 'econfig'
-#require_relative 'lib/init.rb'
-require_relative './lib/youtube_api.rb'
-require_relative './lib/video_mapper.rb'
+require_relative 'lib/init.rb'
+
+
 module VideosPraise
   # Web API
   class Api < Roda
@@ -40,6 +40,11 @@ module VideosPraise
             routing.is do
                 {query:query_name, totalResults: video.videoId.size, videos: video.videoId}
             end
+            routing.get 'kinds' do
+              { kinds: video.kind }
+            end
+
+
           end
         end
       end

@@ -23,7 +23,7 @@ describe 'Tests Praise library' do
         end
 
         it 'SAD: should raise exception on incorrect query name' do
-            get "#{API_VER}/videos/★"
+            get "#{API_VER}/videos/??"
             _(last_response.status).must_equal 404
             body = JSON.parse last_response.body
             _(body.keys).must_include 'error'
