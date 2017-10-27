@@ -6,6 +6,10 @@ Rake::TestTask.new(:spec) do |t|
     t.warning = false
 end
 
+task :console do
+  sh 'pry -r ./spec/test_load_all'
+end
+
 namespace :quality do
 
   desc 'run flog'
