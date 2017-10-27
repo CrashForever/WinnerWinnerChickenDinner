@@ -4,5 +4,5 @@ require 'rack/test'
 include Rack::Test::Methods
 
 def app
-    VideoPraise:API
+    VideosPraise::Api
 end

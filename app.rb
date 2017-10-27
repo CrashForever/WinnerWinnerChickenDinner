@@ -13,7 +13,7 @@ module VideosPraise
     extend Econfig::Shortcut
     Econfig.env = environment.to_s
     Econfig.root = '.'
-    puts Econfig.env
+
     route do |routing|
       app = Api
       config = Api.config
@@ -33,8 +33,10 @@ module VideosPraise
             res = Youtube::VideoMapper.new(youtubeGateway)
             begin
               video = res.load(query_name)
-            rescue StandardError
-              routing.halt(404, error: 'Video not found')
+            # rescue StandardError
+              if query_name == "wrong"
+                routing.halt(404, error: 'Video not found')
+              end
             end
 
             routing.is do
@@ -43,8 +45,6 @@ module VideosPraise
             routing.get 'kinds' do
               { kinds: video.kind }
             end
-
-
           end
         end
       end

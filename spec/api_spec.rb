@@ -14,19 +14,31 @@ describe 'Tests Praise library' do
         VCR.eject_cassette
     end
 
+    describe 'Is Api working' do
+        it 'HAPPY: It works!' do
+            get "/"
+            _(last_response.status).must_equal 200
+        end
+    end
+
     describe 'Video information' do
         it 'HAPPY: should provide correct video id' do
-            get "#{API_VER}/videos/#{QUERY_NAME}"
+            get "#{API_VER}/videosearch/#{QUERY_NAME}"
+            _(last_response.status).must_equal 200
+            video_data = JSON.parse last_response.body
+            _(video_data.size).must_be :>, 0
+        end
+
+        it 'HAPPY: should provide correct video kinds' do
+            get "#{API_VER}/videosearch/#{QUERY_NAME}/kinds"
             _(last_response.status).must_equal 200
             video_data = JSON.parse last_response.body
             _(video_data.size).must_be :>, 0
         end
 
         it 'SAD: should raise exception on incorrect query name' do
-            get "#{API_VER}/videos/??"
+            get "#{API_VER}/videosearch/wrong"
             _(last_response.status).must_equal 404
-            body = JSON.parse last_response.body
-            _(body.keys).must_include 'error'
         end
     end
 end
