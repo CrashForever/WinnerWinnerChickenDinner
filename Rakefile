@@ -27,3 +27,27 @@ namespace :quality do
     sh 'rubocop'
   end
 end
+
+namespace :db do
+  require_relative 'config/environment.rb'
+  require 'sequel'
+
+  Sequel.extension :migration
+  app = VideosPraise::Api
+
+  desc 'Run migrations'
+  task :migrate do
+    puts "Migrating #{app.environment} database to latest"
+    Sequel::Migrator.run(app.DB, 'infrastructure/database/migrations')
+  end
+
+  desc 'Drop all tables'
+  task :drop do
+      require_relative 'config/environment.rb'
+
+      app.DB.drop_table :video_informations
+  end
+
+  desc 'Reset all database tables'
+  task reset: [:drop, :migrate]
+end

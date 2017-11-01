@@ -3,32 +3,35 @@ source 'https://rubygems.org'
 # Networks
 gem 'http'
 
-gem 'json'
-gem 'reek'
-
 # Web app related
 gem 'econfig'
 gem 'roda'
 gem 'puma'
 
-# Testing gems
-gem 'minitest'
-gem 'minitest-rg'
-gem 'pry'
-gem 'rack-test'
-gem 'rake'
-gem 'vcr'
-gem 'pry'
-gem 'rack-test'
-gem 'rake'
-gem 'webmock'
-gem 'simplecov'
+#Database related
+gem 'hirb'
+gem 'sequel'
 
 # Data gems
 gem 'dry-types'
 gem 'dry-struct'
 
-#Quality gems
-gem 'flog'
-gem 'reek'
-gem 'rubocop'
+group :test do
+  gem 'minitest'
+  gem 'minitest-rg'
+  gem 'rack-test'
+  gem 'rake'
+  gem 'simplecov'
+  gem 'vcr'
+  gem 'webmock'
+end
+
+group :development, :test do
+  gem 'sqlite3'
+  gem 'pry'
+  gem 'rerun'
+  gem 'flog'
+  gem 'reek'
+  gem 'rubocop'
+  gem 'json'
+end
