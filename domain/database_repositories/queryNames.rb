@@ -10,8 +10,6 @@ module VideosPraise
         # WHERE ((`username` = 'owername') AND (`name` = 'reponame'))
         db_queryNames = Database::QueryNamesOrm.left_join(:queryResults, id: :queryResults_id)
                                    .where(query_name: queryName)
-        print "find_queryName_results:"
-        puts db_queryNames
         rebuild_entity(db_queryNames)
       end
 

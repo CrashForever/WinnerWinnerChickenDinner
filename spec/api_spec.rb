@@ -8,6 +8,8 @@ describe 'Tests Praise library' do
       VCR.insert_cassette CASSTTE_FILE,
                           record: :new_episodes,
                           match_requests_on: [:method, :uri, :headers]
+      # DatabaseCleaner.clean
+      Rake::Task['db:reset'].invoke
     end
 
     after do
