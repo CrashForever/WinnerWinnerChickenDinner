@@ -17,15 +17,13 @@ module VideosPraise
 
       def self.rebuild_entity(db_record)
         return nil unless db_record
-        results = db_record.each do |item|
+        results = db_record.map do |item|
           puts item[:video_id]
           Entity::QueryName.new(
             query_name: item[:query_name],
             video_id: item[:video_id]
           )
         end
-        puts results
-        results
       end
     end
   end

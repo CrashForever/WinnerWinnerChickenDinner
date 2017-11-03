@@ -27,19 +27,23 @@ module VideosPraise
         routing.on 'v0.1' do
           # /api/v0.1/:ownername/:repo_name branch
           routing.on 'videosearch', String do |query_name|
-            key = config.GOOGLE_API_KEY
-            youtubeGateway = Youtube::Api.new(key)
-            res = Youtube::VideoMapper.new(youtubeGateway)
+            # key = config.GOOGLE_API_KEY
+            # youtubeGateway = Youtube::Api.new(key)
+            # res = Youtube::VideoMapper.new(youtubeGateway)
             begin
-              video = res.load(query_name)
-            # rescue StandardError
-              if query_name == "wrong"
+              # video = res.load(query_name)
+              query_results = Repository::QueryNames.find_queryName_results(query_name)
+              # rescue StandardError
+              if query_name == 'wrong'
                 routing.halt(404, error: 'Video not found')
               end
             end
 
             routing.is do
-                {query:query_name, totalResults: video.videoId.size, videos: video.videoId}
+              # {query:query_name, totalResults: video.videoId.size, videos: video.videoId}
+              res_result = []
+              query_results.each { |x| res_result << x[:video_id] }
+              { video_list: res_result }
             end
             routing.get 'kinds' do
               { kinds: video.kind }
