@@ -45,7 +45,9 @@ namespace :db do
   task :drop do
       require_relative 'config/environment.rb'
 
-      app.DB.drop_table :video_informations
+      app.DB.drop_table :queryNames
+      app.DB.drop_table :queryResults
+
   end
 
   desc 'Reset all database tables'
