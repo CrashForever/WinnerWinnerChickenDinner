@@ -36,9 +36,11 @@ module VideosPraise
               if query_name == 'wrong'
                 routing.halt(404, error: 'Video not found')
               end
-              res_result = []
-              query_results.each { |x| res_result << x[:video_id] }
-              { video_list: res_result }
+              # res_result = []
+              # query_results.each { |x| res_result << x[:video_id] }
+              query_results.to_h
+
+              { video_list: query_results.to_h }
             end
             routing.post do
               key = config.GOOGLE_API_KEY

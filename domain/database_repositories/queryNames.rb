@@ -10,7 +10,12 @@ module VideosPraise
         # WHERE ((`username` = 'owername') AND (`name` = 'reponame'))
         db_queryNames = Database::QueryNamesOrm.left_join(:queryResults, id: :queryResults_id)
                                    .where(query_name: queryName)
-        rebuild_entity(db_queryNames)
+        video_id_ary = []
+        db_queryNames.to_hash.each do |key,value|
+          video_id_ary.push({'video_id': value[:video_id]})
+        end
+
+        rebuild_entity(video_id_ary, queryName, 'GET')
       end
 
       def self.create(entity)
@@ -42,12 +47,22 @@ module VideosPraise
         # end
       end
 
-      def self.rebuild_entity(db_record,query_name)
-        return nil unless db_record
+      def self.rebuild_entity(data,query_name, method='POST')
+        return nil unless data
         video_id_ary = []
-        db_record.each do |item|
-          video_id_ary.push(item.video_id)
+        if method=='POST'
+          puts data.class
+          data.each do |item|
+            video_id_ary.push(item.video_id)
+          end
+        elsif method=='GET'
+          puts data.class
+          data.each do |item|
+            video_id_ary.push(item[:video_id])
+          end
         end
+
+
 
         Entity::QueryName.new(
           # id: nil,
