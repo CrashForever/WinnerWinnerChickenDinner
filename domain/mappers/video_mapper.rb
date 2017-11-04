@@ -47,7 +47,6 @@ module VideosPraise
           # @video_data['items']['id']['kind']
           videoId_ary
         end
-
       end
     end
   end

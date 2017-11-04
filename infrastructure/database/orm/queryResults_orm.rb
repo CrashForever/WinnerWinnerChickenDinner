@@ -5,7 +5,7 @@ module VideosPraise
     # Object-Relational Mapper for Collaborators
     class QueryResultsOrm < Sequel::Model(:queryResults)
       one_to_one :queryNames,
-                  class: :'CodePraise::Database::QueryNamesOrm'
+                  class: :'VideosPraise::Database::QueryNamesOrm'
       plugin :timestamps, update_on_create: true
     end
   end

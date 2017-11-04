@@ -5,6 +5,7 @@ module VideosPraise
     For = {
       Entity::QueryName => QueryNames,
       Entity::QueryResult => QueryResults,
+      Entity::VideoContent => QueryResults
     }.freeze
   end
 end

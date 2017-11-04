@@ -15,13 +15,12 @@ module VideosPraise
       end
 
       def self.find_or_create(entity)
-        find_video_id(entity.video_id) || create_from(entity)
+        find_video_id(entity.videoId) || create_from(entity)
       end
 
       def self.create_from(entity)
         db_queryResults = Database::QueryResultsOrm.create(
-          id: entity.id,
-          video_id: entity.video_id,
+          video_id: entity.videoId
         )
 
         self.rebuild_entity(db_queryResults)
@@ -31,7 +30,7 @@ module VideosPraise
         return nil unless db_record
         Entity::QueryResult.new(
           id: db_record.id,
-          video_id: db_record.id,
+          video_id: db_record.id
         )
       end
     end
