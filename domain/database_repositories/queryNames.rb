@@ -13,15 +13,48 @@ module VideosPraise
         rebuild_entity(db_queryNames)
       end
 
-      def self.rebuild_entity(db_record)
-        return nil unless db_record
-        results = db_record.map do |item|
-          puts item[:video_id]
-          Entity::QueryName.new(
-            query_name: item[:query_name],
-            video_id: item[:video_id]
+      def self.create(entity)
+        create_from(entity)
+      end
+
+      def self.create_from(entity)
+
+        video_id_ary = []
+        entity.video_id.each do |id|
+          video_id_ary.push(id)
+        end
+        db_queryresultResults = QueryResults.create(video_id_ary)
+
+
+        return_entity = []
+        db_queryresultResults.each do |items|
+          db_querynameResults = Database::QueryNamesOrm.create(
+            query_name: entity.query_name,
+            queryResults_id: items.id
           )
         end
+        self.rebuild_entity(db_queryresultResults, entity.query_name)
+        # entity.video_id.each do |id|
+        #   db_queryResults = Database::QueryNamesOrm.create(
+        #     query_name: entity.query_name,
+        #   )
+        #   self.rebuild_entity(db_queryResults)
+        # end
+      end
+
+      def self.rebuild_entity(db_record,query_name)
+        return nil unless db_record
+        video_id_ary = []
+        db_record.each do |item|
+          video_id_ary.push(item.video_id)
+        end
+
+        Entity::QueryName.new(
+          # id: nil,
+          query_name: query_name,
+          video_id: video_id_ary
+        )
+
       end
     end
   end

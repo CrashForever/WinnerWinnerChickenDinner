@@ -42,14 +42,14 @@ module VideosPraise
             end
             routing.post do
               key = config.GOOGLE_API_KEY
-              puts key
               youtube_gateway = Youtube::Api.new(key)
               begin
               video = Youtube::VideoMapper.new(youtube_gateway).load(query_name)
+
               rescue StandardError
                 routing.halt(404, error: "Video not found")
               end
-              stored_video = Repository::For[video.class].find_or_create(video)
+              stored_video = Repository::For[video.class].create(video)
               response.status = 201
               response['Location'] = "/api/v0.1/videosearch/#{query_name}"
               stored_video.to_h
