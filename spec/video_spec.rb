@@ -24,17 +24,17 @@ describe 'Tests Praise library' do
 
   describe 'Body Information' do
     it 'HAPPY: should be video in array' do
-      @video_info.must_be_instance_of VideosPraise::Entity::VideoContent
+      @video_info.must_be_instance_of VideosPraise::Entity::QueryName
     end
 
     it 'HAPPY: should provide same video id' do
-      _@video_info.videoId.zip(CORRECT).each do |v1, v2|
+      _@video_info.video_id.zip(CORRECT).each do |v1, v2|
         v1.must_equal v2.videoId
       end
     end
 
     it 'HAPPY: video id should never be nil' do
-      _@video_info.videoId.each do |v1|
+      _@video_info.video_id.each do |v1|
         v1.wont_be_nil
       end
     end

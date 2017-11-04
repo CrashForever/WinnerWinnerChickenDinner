@@ -3,6 +3,7 @@ require 'http'
 module VideosPraise
   # Library for FacebookAPI
   module Youtube
+    # Youtube Api
     class Api
       module Errors
         # Not allowed to access resource
@@ -50,7 +51,6 @@ module VideosPraise
         ).get(url + "&key=#{@API_KEY}")
         Response.new(response).response_or_error
       end
-
 
       def self.get_search_path(query_name)
         'https://www.googleapis.com/youtube/v3/search?part=id&type=video&q=' + query_name

@@ -10,33 +10,37 @@ module VideosPraise
 
       def load(query_name)
         video_data = @gateway.get_video(query_name)
-        build_entity(video_data)
+        build_entity(video_data,query_name)
       end
 
-      def build_entity(video_data)
-        DataMapper.new(video_data, @gateway).build_entity
+      def build_entity(video_data,query_name)
+        DataMapper.new(video_data, @gateway,query_name).build_entity
       end
       class DataMapper
-        def initialize(video_data, gateway)
+        def initialize(video_data, gateway,query_name)
           @video_data = video_data
-
+          @query_name = query_name
         end
 
         def build_entity
-            VideosPraise::Entity::VideoContent.new(
-                kind: kind,
-                videoId: videoId
+            obj = VideosPraise::Entity::QueryName.new(
+                # kind: kind,
+                # videoId: videoId
+                # id: nil,
+                query_name: @query_name,
+                video_id: videoId
             )
+            return obj
         end
 
-        def kind
-          kind_ary = []
-          @video_data['items'].each do |item|
-            kind_ary << item['id']['kind']
-          end
-          # @video_data['items']['id']['kind']
-          kind_ary
-        end
+        # def kind
+        #   kind_ary = []
+        #   @video_data['items'].each do |item|
+        #     kind_ary << item['id']['kind']
+        #   end
+        #   # @video_data['items']['id']['kind']
+        #   kind_ary
+        # end
 
         def videoId
           #@video_data['items']['id']['videoId']
@@ -47,7 +51,6 @@ module VideosPraise
           # @video_data['items']['id']['kind']
           videoId_ary
         end
-
       end
     end
   end

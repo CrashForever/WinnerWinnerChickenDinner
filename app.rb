@@ -1,7 +1,5 @@
 require 'roda'
 require 'econfig'
-require_relative 'lib/init.rb'
-
 
 module VideosPraise
   # Web API
@@ -28,22 +26,35 @@ module VideosPraise
         routing.on 'v0.1' do
           # /api/v0.1/:ownername/:repo_name branch
           routing.on 'videosearch', String do |query_name|
-            key = config.GOOGLE_API_KEY
-            youtubeGateway = Youtube::Api.new(key)
-            res = Youtube::VideoMapper.new(youtubeGateway)
-            begin
-              video = res.load(query_name)
-            # rescue StandardError
-              if query_name == "wrong"
+            # key = config.GOOGLE_API_KEY
+            # youtubeGateway = Youtube::Api.new(key)
+            # res = Youtube::VideoMapper.new(youtubeGateway)
+            routing.get do
+              # video = res.load(query_name)
+              query_results = Repository::QueryNames.find_queryName_results(query_name)
+              # rescue StandardError
+              if query_name == 'wrong'
                 routing.halt(404, error: 'Video not found')
               end
-            end
+              # res_result = []
+              # query_results.each { |x| res_result << x[:video_id] }
+              query_results.to_h
 
-            routing.is do
-                {query:query_name, totalResults: video.videoId.size, videos: video.videoId}
+              { video_list: query_results.to_h }
             end
-            routing.get 'kinds' do
-              { kinds: video.kind }
+            routing.post do
+              key = config.GOOGLE_API_KEY
+              youtube_gateway = Youtube::Api.new(key)
+              begin
+              video = Youtube::VideoMapper.new(youtube_gateway).load(query_name)
+
+              rescue StandardError
+                routing.halt(404, error: "Video not found")
+              end
+              stored_video = Repository::For[video.class].create(video)
+              response.status = 201
+              response['Location'] = "/api/v0.1/videosearch/#{query_name}"
+              stored_video.to_h
             end
           end
         end

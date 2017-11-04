@@ -11,6 +11,9 @@ require 'webmock'
 
 require_relative 'test_load_all'
 
+load 'Rakefile'
+Rake::Task['db:reset'].invoke
+
 QUERY_NAME = CGI.escape('tomato recipe').freeze
 CORRECT = YAML.load(File.read('./spec/fixtures/results.yml'))
 
