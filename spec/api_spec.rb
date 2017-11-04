@@ -32,7 +32,7 @@ describe 'Tests Praise library' do
       end
 
       it 'SAD: should report error if wrong query' do
-        post "#{API_VER}/videosearch/#{QUERY_NAME}"
+        post "#{API_VER}/videosearch/??"
         _(last_response.status).must_equal 404
       end
     end
@@ -50,7 +50,7 @@ describe 'Tests Praise library' do
       end
 
       it 'SAD: should report error if no database repo entity found' do
-        get "#{API_VER}/videosearch/#{QUERY_NAME}"
+        get "#{API_VER}/videosearch/??"
         _(last_response.status).must_equal 404
       end
     end

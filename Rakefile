@@ -47,7 +47,8 @@ namespace :db do
 
       app.DB.drop_table :queryNames
       app.DB.drop_table :queryResults
-
+      app.DB.drop_table :query_Name_Results
+      app.DB.drop_table :schema_info
   end
 
   desc 'Reset all database tables'

@@ -1,8 +1,8 @@
 require 'http'
 require 'yaml'
 require 'json'
-require_relative './lib/youtube_api.rb'
-require_relative './lib/video_mapper.rb'
+require_relative './infrastructure/youtube/youtube_api.rb'
+require_relative './domain/mappers/video_mapper.rb'
 
 config = YAML::load(File.read('./config/secrets.yml'))['GOOGLE_API_KEY']
 #https://graph.facebook.com/v2.10/576472312465910_1462879673825165?fields=id,likes{name,link},message,expanded_height,created_time,with_tags&access_token=132884690698758|dQjGqLbXdJtjOeX8tB55nVHLfSw

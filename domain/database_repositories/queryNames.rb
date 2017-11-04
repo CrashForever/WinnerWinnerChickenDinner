@@ -31,9 +31,8 @@ module VideosPraise
         db_queryresultResults = QueryResults.create(video_id_ary)
 
 
-        return_entity = []
         db_queryresultResults.each do |items|
-          db_querynameResults = Database::QueryNamesOrm.create(
+          Database::QueryNamesOrm.create(
             query_name: entity.query_name,
             queryResults_id: items.id
           )
@@ -51,12 +50,10 @@ module VideosPraise
         return nil unless data
         video_id_ary = []
         if method=='POST'
-          puts data.class
           data.each do |item|
             video_id_ary.push(item.video_id)
           end
         elsif method=='GET'
-          puts data.class
           data.each do |item|
             video_id_ary.push(item[:video_id])
           end
