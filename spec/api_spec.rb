@@ -16,31 +16,42 @@ describe 'Tests Praise library' do
         VCR.eject_cassette
     end
 
-    describe 'Is Api working' do
+    describe 'Is API working' do
         it 'HAPPY: It works!' do
             get "/"
             _(last_response.status).must_equal 200
         end
     end
 
-    describe 'Video information' do
-        it 'HAPPY: should provide correct video id' do
-            get "#{API_VER}/videosearch/#{QUERY_NAME}"
-            _(last_response.status).must_equal 200
-            video_data = JSON.parse last_response.body
-            _(video_data.size).must_be :>, 0
-        end
+    describe "POSTting to create video from Youtube" do
+      it 'HAPPY: should retrieve and store repo and collaborators' do
+        post "#{API_VER}/videosearch/#{QUERY_NAME}"
+        _(last_response.status).must_equal 201
+        repo_data = JSON.parse last_response.body
+        _(repo_data.size).must_be :>, 0
+      end
 
-        it 'HAPPY: should provide correct video kinds' do
-            get "#{API_VER}/videosearch/#{QUERY_NAME}/kinds"
-            _(last_response.status).must_equal 200
-            video_data = JSON.parse last_response.body
-            _(video_data.size).must_be :>, 0
-        end
+      it 'SAD: should report error if wrong query' do
+        post "#{API_VER}/videosearch/#{QUERY_NAME}"
+        _(last_response.status).must_equal 404
+      end
+    end
 
-        it 'SAD: should raise exception on incorrect query name' do
-            get "#{API_VER}/videosearch/wrong"
-            _(last_response.status).must_equal 404
-        end
+    describe "GETing database entities" do
+      before do
+        post "#{API_VER}/videosearch/#{QUERY_NAME}"
+      end
+
+      it 'HAPPY: should find stored video id' do
+        get "#{API_VER}/videosearch/#{QUERY_NAME}"
+        _(last_response.status).must_equal 200
+        repo_data = JSON.parse last_response.body
+        _(repo_data.size).must_be :>, 0
+      end
+
+      it 'SAD: should report error if no database repo entity found' do
+        get "#{API_VER}/videosearch/#{QUERY_NAME}"
+        _(last_response.status).must_equal 404
+      end
     end
 end
