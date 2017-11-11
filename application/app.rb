@@ -3,7 +3,6 @@ require 'roda'
 module VideosPraise
   # Web API
   class Api < Roda
-    plugin :json
     plugin :halt
 
     route do |routing|
@@ -21,28 +20,34 @@ module VideosPraise
           routing.on 'videosearch', String do |query_name|
             routing.get do
               # video = res.load(query_name)
-              query_results = Repository::QueryNames.find_queryName_results(query_name)
-              # rescue StandardError
-              if query_name == 'wrong'
-                routing.halt(404, error: 'Video not found')
-              end
-              query_results.to_h
+              find_result = FindDatabaseRepo.call(
+                query_name: query_name
+              )
 
-              { video_list: query_results.to_h }
+              http_response = HttpResponseRepresenter.new(find_result.value)
+              response.status = http_response.http_code
+
+              if find_result.success?
+                VideosRepresenter.new(find_result.value.message).to_json
+              else
+                http_response.to_json
+              end
             end
 
             routing.post do
-              begin
-              video = Youtube::VideoMapper.new(app.config).load(query_name)
+              service_result = LoadFromYoutube.new.call(
+                   config: app.config,
+                   query_name: query_name
+              )
 
-              rescue StandardError
-                routing.halt(404, error: "Video not found")
+              http_response = HttpResponseRepresenter.new(service_result.value)
+              response.status = http_response.http_code
+              if service_result.success?
+                 response['Location'] = "/api/v0.1/videosearch/#{query_name}"
+                 VideosRepresenter.new(service_result.value.message).to_json
+              else
+                 http_response.to_json
               end
-              
-              stored_video = Repository::For[video.class].create(video)
-              response.status = 201
-              response['Location'] = "/api/v0.1/videosearch/#{query_name}"
-              stored_video.to_h
             end
           end
         end
