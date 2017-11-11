@@ -12,10 +12,10 @@ module VideosPraise
 
       def load(query_name)
         video_data = @gateway.get_video(query_name)
-        build_entity(video_data,query_name)
+        build_entity(video_data, query_name)
       end
 
-      def build_entity(video_data)
+      def build_entity(video_data, query_name)
         DataMapper.new(video_data, @config, @gateway_class, query_name).build_entity
       end
 
