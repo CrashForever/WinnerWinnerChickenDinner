@@ -4,8 +4,10 @@ module VideosPraise
   module Youtube
     # Data Mapper object for Youtube's data
     class VideoMapper
-      def initialize(gateway)
-        @gateway = gateway
+      def initialize(config, gateway_class = Youtube::Api)
+         @config = config
+         @gateway_class = gateway_class
+         @gateway = @gateway_class.new(@config.GOOGLE_API_KEY)
       end
 
       def load(query_name)
@@ -13,11 +15,12 @@ module VideosPraise
         build_entity(video_data,query_name)
       end
 
-      def build_entity(video_data,query_name)
-        DataMapper.new(video_data, @gateway,query_name).build_entity
+      def build_entity(video_data)
+        DataMapper.new(video_data, @config, @gateway_class, query_name).build_entity
       end
+
       class DataMapper
-        def initialize(video_data, gateway,query_name)
+        def initialize(video_data, config, gateway_class, query_name)
           @video_data = video_data
           @query_name = query_name
         end
