@@ -1,7 +1,6 @@
 coverage/
 *.DS_Store
 infrastructure/database/*.db
-config/app.yml
 .bundle/
 repostore/
 temp/
