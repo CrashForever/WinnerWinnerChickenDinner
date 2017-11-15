@@ -1,7 +1,9 @@
-config/*.yml
 coverage/
 *.DS_Store
-infrastructure/database/dev.db
+infrastructure/database/*.db
 config/app.yml
-db/*.*
 .bundle/
+repostore/
+temp/
+config/secrets.yml
+*.db
