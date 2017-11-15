@@ -12,7 +12,7 @@ gem 'pry' # to run console in production
 gem 'puma'
 gem 'rake' # to run migrations in production
 gem 'roda'
-
+gem 'slim'
 # Database related
 gem 'hirb'
 gem 'sequel'
