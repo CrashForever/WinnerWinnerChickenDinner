@@ -43,3 +43,7 @@ group :development, :test do
   gem 'rubocop'
   gem 'json'
 end
+
+group :production do
+  gem 'pg'
+end
