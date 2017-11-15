@@ -16,6 +16,7 @@ GEM
     concurrent-ruby (1.0.5)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
+    database_cleaner (1.6.2)
     declarative (0.0.10)
     declarative-option (0.1.0)
     descendants_tracker (0.0.4)
@@ -92,6 +93,7 @@ GEM
     parser (2.4.0.0)
       ast (~> 2.2)
     path_expander (1.0.2)
+    pg (0.21.0)
     powerpack (0.1.1)
     pry (0.11.2)
       coderay (~> 1.1.0)
@@ -163,6 +165,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  database_cleaner
   dry-monads
   dry-struct
   dry-transaction
@@ -175,6 +178,7 @@ DEPENDENCIES
   minitest
   minitest-rg
   multi_json
+  pg
   pry
   puma
   rack-test

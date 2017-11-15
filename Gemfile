@@ -5,8 +5,10 @@ gem 'http'
 
 # Web app related
 gem 'econfig'
-gem 'roda'
+gem 'pry' # to run console in production
 gem 'puma'
+gem 'rake' # to run migrations in production
+gem 'roda'
 
 #Database related
 gem 'hirb'
@@ -15,6 +17,8 @@ gem 'sequel'
 # Data gems
 gem 'dry-types'
 gem 'dry-struct'
+
+
 
 # Representers
 gem 'roar'
@@ -37,9 +41,15 @@ end
 group :development, :test do
   gem 'sqlite3'
   gem 'pry'
+  gem 'database_cleaner'
+
   gem 'rerun'
   gem 'flog'
   gem 'reek'
   gem 'rubocop'
   gem 'json'
+end
+
+group :production do
+  gem 'pg'
 end

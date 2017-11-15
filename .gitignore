@@ -2,3 +2,6 @@ config/*.yml
 coverage/
 *.DS_Store
 infrastructure/database/dev.db
+config/app.yml
+db/*.*
+.bundle/
