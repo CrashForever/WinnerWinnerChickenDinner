@@ -18,12 +18,15 @@ module VideosPraise
     end
 
     configure :development, :test do
+      puts "666666666"
       ENV['DATABASE_URL'] = 'sqlite://' + config.db_filename
     end
 
     configure :production do
       # Use Heroku's DATABASE_URL environment variable
       # ENV['DATABASE_URL'] = 'postgres://'+ config.db_filename
+      puts "77777777"
+
     end
 
     configure do
