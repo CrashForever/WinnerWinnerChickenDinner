@@ -1,16 +1,27 @@
 require 'roda'
+require 'slim'
 
 module VideosPraise
   # Web API
   class Api < Roda
     plugin :halt
-
+    plugin :render, engine: 'slim', views: 'presentation/views'
+    plugin :assets, css: 'style.css', views: 'presentation/assets'
     route do |routing|
       app = Api
 
       # GET / request
       routing.root do
         { 'message' => "CodePraise API v0.1 up in #{app.environment} mode" }
+        view 'home', locals: {
+                            results:[{
+                                query_name: "tomato",
+                                url: "123"
+                            },{
+                              query_name: "tomato",
+                              url: "456"
+                              }]
+                      }
       end
 
       routing.on 'api' do

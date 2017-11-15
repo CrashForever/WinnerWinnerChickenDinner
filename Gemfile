@@ -7,12 +7,11 @@ gem 'http'
 gem 'econfig'
 gem 'pry' # to run console in production
 gem 'puma'
+gem 'slim'
 gem 'rake' # to run migrations in production
-gem 'roda'
-
-#Database related
 gem 'hirb'
 gem 'sequel'
+gem 'roda'
 
 # Data gems
 gem 'dry-types'
