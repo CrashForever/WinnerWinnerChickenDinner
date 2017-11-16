@@ -24,9 +24,6 @@ module VideosPraise
 
     configure :production do
       # Use Heroku's DATABASE_URL environment variable
-      # ENV['DATABASE_URL'] = "postgres://wgjghaymxsihxk:8783032fea57e2f3f1922c44bf23783f4d71bc1c186d49888c7d69853a7defcf@ec2-107-22-187-21.compute-1.amazonaws.com:5432/d167khd5aki3nh"
-      # puts "77777777"
-
     end
 
     configure do
