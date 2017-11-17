@@ -8,7 +8,16 @@ module VideosPraise
         db_record = Database::QueryResultsOrm.first(id: id)
         rebuild_entity(db_record)
       end
-
+      def self.find_all()
+        db_record = Database::QueryResultsOrm.all
+        results=[]
+        db_record.each do |items|
+          results.push(self.rebuild_entity(items))
+        end
+        Entity::VideoContent.new(
+          all_videos: results
+        )
+      end
       def self.find_video_id(video_id)
         db_record = Database::QueryResultsOrm.first(video_id: video_id)
         rebuild_entity(db_record)

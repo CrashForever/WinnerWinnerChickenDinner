@@ -18,6 +18,7 @@ module VideosPraise
         routing.on 'v0.1' do
           # /api/v0.1/:ownername/:repo_name branch
           routing.on 'videosearch', String do |query_name|
+
             routing.get do
               # video = res.load(query_name)
               find_result = FindDatabaseRepo.call(
@@ -26,7 +27,7 @@ module VideosPraise
 
               http_response = HttpResponseRepresenter.new(find_result.value)
               response.status = http_response.http_code
-
+              puts find_result.value.message
               if find_result.success?
                 VideosRepresenter.new(find_result.value.message).to_json
               else
@@ -47,6 +48,23 @@ module VideosPraise
                  VideosRepresenter.new(service_result.value.message).to_json
               else
                  http_response.to_json
+              end
+
+            end
+
+          end
+          routing.on 'getAll' do
+            routing.get do
+
+              find_all_result = GetAllVideoes.call()
+
+              http_response = HttpResponseRepresenter.new(find_all_result.value)
+              response.status = http_response.http_code
+              puts find_all_result.value.message
+              if find_all_result.success?
+                ALLVideosRepresenter.new(find_all_result.value.message).to_json
+              else
+                http_response.to_json
               end
             end
           end

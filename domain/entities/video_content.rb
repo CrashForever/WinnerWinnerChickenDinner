@@ -1,10 +1,10 @@
 require 'dry-struct'
+require_relative 'queryResult.rb'
 
 module VideosPraise
   module Entity
     class VideoContent < Dry::Struct
-      attribute :videoId, Types::Strict::Array
-      attribute :kind, Types::Strict::Array
+      attribute :all_videos, Types::Strict::Array.member(QueryResult)
     end
   end
 end
