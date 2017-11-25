@@ -4,6 +4,7 @@ module VideosPraise
   # Web API
   class Api < Roda
     plugin :halt
+    plugin :all_verbs
 
     route do |routing|
       app = Api
@@ -102,6 +103,18 @@ module VideosPraise
                 http_response.to_json
               end
 
+            end
+          end
+
+          routing.on 'delete_videos' do
+            routing.delete do
+              %i[queryNames queryResults queryNumbers].each do |table|
+                Api.DB[table].delete
+              end
+              http_response = HttpResponseRepresenter
+                                .new(Result.new(:ok, 'deleted tables'))
+              response.status = http_response.http_code
+              http_response.to_json
             end
           end
         end
