@@ -66,6 +66,42 @@ module VideosPraise
               else
                 http_response.to_json
               end
+
+            end
+
+          end
+          routing.on 'storequeryName', String do |query_name|
+            routing.get do
+
+              result = StoreQueryName.call(query_name: query_name)
+
+              http_response = HttpResponseRepresenter.new(result.value)
+              response.status = http_response.http_code
+              # puts find_all_result.value.message[:query_name]
+              # puts find_all_result.value.message[:number]
+
+              if result.success?
+                QueryNumberRepresenter.new(result.value.message).to_json
+              else
+                http_response.to_json
+              end
+
+            end
+            routing.post do
+
+              result = GetQueryNameNum.call(query_name: query_name)
+
+              http_response = HttpResponseRepresenter.new(result.value)
+              response.status = http_response.http_code
+              # puts find_all_result.value.message[:query_name]
+              # puts find_all_result.value.message[:number]
+
+              if result.success?
+                QueryNumberRepresenter.new(result.value.message).to_json
+              else
+                http_response.to_json
+              end
+
             end
           end
         end

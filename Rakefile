@@ -52,6 +52,10 @@ namespace :db do
 
       app.DB.drop_table :queryNames
       app.DB.drop_table :queryResults
+      app.DB.drop_table :queryNumbers
+      app.DB.drop_table :schema_info
+      app.DB.drop_table :sqlite_sequence
+
   end
 
   desc 'Reset all database tables'
