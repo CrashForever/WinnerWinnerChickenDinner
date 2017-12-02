@@ -9,6 +9,7 @@ module VideosPraise
 
     require_relative 'video'
     require_relative 'vision'
+    require_relative 'recipe'
 
     route do |routing|
       response['Content-Type'] = 'application/json'
