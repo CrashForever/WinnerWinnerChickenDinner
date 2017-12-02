@@ -24,7 +24,7 @@ module VideosPraise
 
         routing.post do
           service_result = LoadFromYoutube.new.call(
-            config: app.config,
+            config: Api.config,
             query_name: query_name
           )
           ### store query name
