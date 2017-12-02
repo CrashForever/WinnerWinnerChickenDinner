@@ -1,6 +1,6 @@
 # frozen_string_literal: false
 
-folders = %w[database/orm youtube]
+folders = %w[database/orm youtube edamam]
 folders.each do |folder|
   require_relative "#{folder}/init.rb"
 end
