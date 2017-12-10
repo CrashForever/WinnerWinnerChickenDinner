@@ -1,4 +1,6 @@
 # video_mapper.rb
+require 'json'
+
 module VideosPraise
   # Library for FacebookAPI
   module GoogleVision
@@ -10,28 +12,29 @@ module VideosPraise
          @gateway = @gateway_class.new(@config.GOOGLE_API_KEY)
       end
 
-      def load(query_name)
-        video_data = @gateway.get_video(query_name)
-        build_entity(video_data, query_name)
+      def load(base64_file_string)
+        analyzed_data = @gateway.analyze(base64_file_string)
+        # puts "Hi i am back "
+        # puts analyzed_data
+        build_entity(analyzed_data)
       end
 
-      def build_entity(video_data, query_name)
-        DataMapper.new(video_data, @config, @gateway_class, query_name).build_entity
+      def build_entity(analyzed_data)
+        DataMapper.new(analyzed_data, @config, @gateway_class).build_entity
       end
 
       class DataMapper
-        def initialize(video_data, config, gateway_class, query_name)
-          @video_data = video_data
-          @query_name = query_name
+        def initialize(analyzed_data, config, gateway_class)
+          @analyzed_data = analyzed_data
         end
 
         def build_entity
-            obj = VideosPraise::Entity::QueryName.new(
+            obj = VideosPraise::Entity::GoogleVision.new(
                 # kind: kind,
                 # videoId: videoId
                 # id: nil,
-                query_name: @query_name,
-                video_id: videoId
+                label: label,
+                score: score
             )
             return obj
         end
@@ -45,14 +48,15 @@ module VideosPraise
         #   kind_ary
         # end
 
-        def videoId
-          #@video_data['items']['id']['videoId']
-          videoId_ary = []
-          @video_data['items'].each do |item|
-            videoId_ary << item['id']['videoId']
-          end
-          # @video_data['items']['id']['kind']
-          videoId_ary
+        def label
+          tmp = JSON.parse(@analyzed_data.to_json)
+          label = tmp['responses'][0]['labelAnnotations'][0]['description']
+          label
+        end
+        def score
+          tmp = JSON.parse(@analyzed_data.to_json)
+          score = tmp['responses'][0]['labelAnnotations'][0]['score']
+          score
         end
       end
     end

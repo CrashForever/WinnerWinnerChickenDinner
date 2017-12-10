@@ -16,7 +16,7 @@ module VideosPraise
 
       encoded_string = Base64.encode64(input[:file][:tempfile].read)
 
-      Right(base64_file_string: encoded_string)
+      Right(config: input[:config], base64_file_string: encoded_string)
     rescue StandardError
       Left(Result.new(:bad_request, 'error when file encoded '))
     end
@@ -30,24 +30,9 @@ module VideosPraise
     # end
 
     def google_vision_api(input)
-      puts 'in google_vision_api'
-      # {
-      #   "requests": [
-      #     {
-      #       "image": {
-      #         "content": ""},
-      #       "features": [
-      #         {
-      #           "type": "LABEL_DETECTION",
-      #           "maxResults": 1
-      #         }
-      #       ]
-      #     }
-      #   ]
-      # }
-      results = GoogleVision::GoogleMapper.new(input[:config]).load(input[:query_name])
-
-      Right(Result.new(:ok, 'nice'))
+      # puts 'in google_vision_api'
+      results = GoogleVision::GoogleMapper.new(input[:config]).load(input[:base64_file_string])
+      Right(Result.new(:ok, results))
     rescue StandardError => e
       puts e.to_s
       Left(Result.new(:internal_error, 'error when file analyzed'))
