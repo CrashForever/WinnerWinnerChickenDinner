@@ -11,14 +11,8 @@ module VideosPraise
             config: Api.config,
             query_name: query_name
           )
-          http_response = HttpResponseRepresenter.new(service_result.value)
-          puts http_response
-          response.status = http_response.http_code
-          if service_result.success?
-            response['Location'] = "/api/v0.1/recipesearch/#{query_name}"
-            RecipesRepresenter.new(service_result.value.message).to_json
-          else
-            http_response.to_json
+          represent_response(service_result, RecipesRepresenter) do
+              response['Location'] = "/api/v0.1/recipesearch/#{query_name}"
           end
         end
       end
