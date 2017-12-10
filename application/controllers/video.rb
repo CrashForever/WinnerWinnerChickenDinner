@@ -11,15 +11,7 @@ module VideosPraise
           find_result = FindDatabaseRepo.call(
             query_name: query_name
           )
-
-          http_response = HttpResponseRepresenter.new(find_result.value)
-          response.status = http_response.http_code
-          puts find_result.value.message
-          if find_result.success?
-            VideosRepresenter.new(find_result.value.message).to_json
-          else
-            http_response.to_json
-          end
+          represent_response(find_result, VideosRepresenter)
         end
 
         routing.post do
@@ -45,15 +37,7 @@ module VideosPraise
       routing.on 'getAll' do
         routing.get do
           find_all_result = GetAllVideoes.call
-
-          http_response = HttpResponseRepresenter.new(find_all_result.value)
-          response.status = http_response.http_code
-          puts find_all_result.value.message
-          if find_all_result.success?
-            ALLVideosRepresenter.new(find_all_result.value.message).to_json
-          else
-            http_response.to_json
-          end
+          represent_response(find_all_result, ALLVideosRepresenter)
         end
       end
 
@@ -74,28 +58,12 @@ module VideosPraise
       routing.on 'storequeryName', String do |query_name|
         routing.get do
           result = StoreQueryName.call(query_name: query_name)
-
-          http_response = HttpResponseRepresenter.new(result.value)
-          response.status = http_response.http_code
-
-          if result.success?
-            QueryNumberRepresenter.new(result.value.message).to_json
-          else
-            http_response.to_json
-          end
+          represent_response(result, QueryNumberRepresenter)
 
         end
         routing.post do
           result = GetQueryNameNum.call(query_name: query_name)
-
-          http_response = HttpResponseRepresenter.new(result.value)
-          response.status = http_response.http_code
-
-          if result.success?
-            QueryNumberRepresenter.new(result.value.message).to_json
-          else
-            http_response.to_json
-          end
+          represent_response(result, QueryNumberRepresenter)
 
         end
       end
