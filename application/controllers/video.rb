@@ -21,14 +21,8 @@ module VideosPraise
           )
           ### store query name
           StoreQueryName.call(query_name: query_name)
-
-          http_response = HttpResponseRepresenter.new(service_result.value)
-          response.status = http_response.http_code
-          if service_result.success?
-            response['Location'] = "/api/v0.1/videosearch/#{query_name}"
-            VideosRepresenter.new(service_result.value.message).to_json
-          else
-            http_response.to_json
+          represent_response(service_result, VideosRepresenter) do
+              response['Location'] = "/api/v0.1/videosearch/#{query_name}"
           end
         end
       end
