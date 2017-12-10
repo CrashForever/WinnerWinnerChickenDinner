@@ -123,8 +123,9 @@ module VideosPraise
           routing.on 'google_vision' do
             routing.post do
               file = routing.params['file']
+              puts 'in routing.on'
               puts file
-              # result = GetQueryNameNum.call(query_name: query_name)
+              result = ImageAnalyze.new.call(file: file)
               #
               # http_response = HttpResponseRepresenter.new(result.value)
               # response.status = http_response.http_code
