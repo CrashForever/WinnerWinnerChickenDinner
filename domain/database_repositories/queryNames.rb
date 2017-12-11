@@ -28,7 +28,8 @@ module VideosPraise
         entity.video_id.each do |id|
           video_id_ary.push(id)
         end
-        db_queryresultResults = QueryResults.create(video_id_ary)
+
+        #db_queryresultResults = QueryResults.create(video_id_ary)
 
 
         db_queryresultResults.each do |items|
