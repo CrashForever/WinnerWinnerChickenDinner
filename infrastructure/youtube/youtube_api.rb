@@ -53,7 +53,7 @@ module VideosPraise
       end
 
       def self.get_search_path(query_name)
-        'https://www.googleapis.com/youtube/v3/search?part=id&type=video&q=' + query_name
+        'https://www.googleapis.com/youtube/v3/search?part=id&type=video&maxResults=9&q=' + query_name
       end
     end
   end
