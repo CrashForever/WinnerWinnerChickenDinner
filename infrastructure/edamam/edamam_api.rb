@@ -54,7 +54,7 @@ module VideosPraise
       end
 
       def self.get_search_path(query_name)
-        'https://api.edamam.com/search?from=0&to=5&q=' + query_name
+        'https://api.edamam.com/search?from=0&to=9&q=' + query_name
       end
     end
   end
