@@ -39,8 +39,8 @@ module VideosPraise
 
       def get_recipe(query_name)
         # 要對query_name做空白=%20的處理
-        query_name_esc = CGI.escape(query_name)
-        edamam_request_rul = Api.get_search_path(query_name_esc.to_s)
+        # query_name_esc = CGI.escape(query_name)
+        edamam_request_rul = Api.get_search_path(query_name.to_s)
         call_edamam_api_url(edamam_request_rul).parse
       end
 
