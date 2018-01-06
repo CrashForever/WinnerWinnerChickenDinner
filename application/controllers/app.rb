@@ -27,7 +27,7 @@ module VideosPraise
 
       # GET / request
       routing.root do
-        { 'message' => "CodePraise API v0.1 up in #{Api.environment} mode" }
+        message = "CodePraise API v0.1 up in #{Api.environment} mode"
         HttpResponseRepresenter.new(Result.new(:ok, message)).to_json
       end
 
