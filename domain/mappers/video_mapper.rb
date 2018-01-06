@@ -7,6 +7,7 @@ module VideosPraise
       def initialize(config, gateway_class = Youtube::Api)
          @config = config
          @gateway_class = gateway_class
+         puts @config.GOOGLE_API_KEY
          @gateway = @gateway_class.new(@config.GOOGLE_API_KEY)
       end
 

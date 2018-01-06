@@ -49,6 +49,7 @@ module VideosPraise
         response = HTTP.headers(
           'Accept' => "application/json"
         ).get(url + "&key=#{@API_KEY}")
+        puts url + "&key=#{@API_KEY}"
         Response.new(response).response_or_error
       end
 
