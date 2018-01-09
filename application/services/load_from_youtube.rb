@@ -28,10 +28,19 @@ module VideosPraise
 
     def store_video_in_repository(input)
       stored_video = Repository::For[input[:video].class].create(input[:video])
+      video_json = VideosRepresenter.new(stored_video).to_json
+      notify_listeners(video_json, input[:config])
       Right(Result.new(:created, stored_video))
     rescue StandardError => e
       puts e.to_s
       Left(Result.new(:internal_error, 'Could not store videos'))
+    end
+
+    private
+
+    def notify_listeners(message, config)
+      scheduled_queue = Messaging::Queue.new(config.SCHEDULED_QUEUE_URL)
+      scheduled_queue.send(message)
     end
   end
 end
